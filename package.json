@@ -2,7 +2,6 @@
   "name": "twir",
   "version": "0.0.1",
   "description": "Twitter client",
-  "main": "index.js",
   "scripts": {
     "dev": "next dev",
     "build": "env NODE_ENV='production' next build",
@@ -19,7 +18,7 @@
   "bugs": {
     "url": "https://github.com/rrih/twir/issues"
   },
-  "homepage": "https://github.com/rrih/twir#readme",
+  "homepage": "https://rrih.github.io/twir/",
   "dependencies": {
     "fs": "^0.0.1-security",
     "next": "^10.0.5",
