@@ -1,7 +1,7 @@
 {
-  "name": "twitter_api_js",
+  "name": "twitter-api",
   "version": "1.0.0",
-  "description": "",
+  "description": "rrih <rsklv.icloud.com>",
   "main": "index.js",
   "dependencies": {
     "dotenv": "^8.2.0"

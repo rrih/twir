@@ -8,12 +8,25 @@ const client = new Twitter({
     access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET,
 });
 
-const params = {screen_name: 'nodejs'};
+const screenName = 'rrihapp'
 
-client.get('statused/user_timeline', params, function(error, tweets, response) {
+const userParams = {screen_name: screenName, count:20};
+const searchParams = {
+    q: 'rrihapp',
+    count: 1
+}
+
+// ツイート一覧取得
+client.get('statused/user_timeline', userParams, function(error, tweets, response){
     if (!error) {
-        console.log(tweets);
-    } else {
-        console.log('hoge')
+        console.log(tweets)        
+    }
+})
+
+// 検索結果取得
+client.get('search/tweets', searchParams, function(error, result, response){
+    // const userInfo = tweets[0].user
+    if (!error) {
+        console.log(result)        
     }
 });
