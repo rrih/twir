@@ -4,7 +4,7 @@ import twitter from './twitterConnect'
 // const params = { screen_name: 'nodejs' };
 const searchParams = {
     q: 'rrihapp',
-    count: 1
+    count: 10
 }
 
 const handler = async (_req: NextApiRequest, res: NextApiResponse): Promise<void> => {
