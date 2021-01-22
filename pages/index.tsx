@@ -1,9 +1,10 @@
 import axios from "axios";
+import { FC } from "react";
 
 const Index: FC = () => {
     return (
         <>
-            <p>Hello World</p>
+            <h1>検索結果表示</h1>
         </>
     )
 }
