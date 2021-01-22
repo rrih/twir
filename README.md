@@ -1,3 +1,3 @@
-# twitter-api
+# twir
 
-TwitterAPIで遊んでみる
+Twitter
