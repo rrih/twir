@@ -1,0 +1,25 @@
+{
+  "name": "twir",
+  "version": "0.0.1",
+  "description": "Twitter client",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rrih/twir.git"
+  },
+  "keywords": [],
+  "author": "rrih <rsklv@icloud.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rrih/twir/issues"
+  },
+  "homepage": "https://github.com/rrih/twir#readme",
+  "dependencies": {
+    "next": "^10.0.5",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
+  }
+}
