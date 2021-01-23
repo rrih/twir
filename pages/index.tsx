@@ -15,7 +15,7 @@ const Index: FC = () => {
 				<br />
 				きまぐれで実験的に作っているので色々と変わります
 				<br />
-				<a href="https://github.com/rrih/twir">Github</a>
+				<a href="https://github.com/rrih/twir">GitHub</a>
 			</Layout>
 		</MuiThemeProvider>
 	)
