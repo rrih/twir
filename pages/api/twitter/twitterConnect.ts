@@ -1,4 +1,4 @@
-import Twitter from "twitter";
+const Twitter = require('twitter')
 
 const twitter = new Twitter({
     consumer_key: process.env.TWITTER_CONSUMER_KEY,

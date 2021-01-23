@@ -2,6 +2,8 @@ import axios from "axios";
 import { FC, useEffect, useState } from "react";
 import { Tweet } from "../interfaces";
 
+const api: string = process.env.NODE_ENV === 'production' ? 'https://rrih.github.io' : 'http://localhost:3000'
+// console.log(api)
 const Index: FC = () => {
     const [searchedList, setSearchedList] = useState<Array<Tweet>>();
 
@@ -10,7 +12,7 @@ const Index: FC = () => {
     }, [])
 
     const result = async () => {
-        axios.get('http://localhost:3000/api/twitter')
+        axios.get(`${api}/api/twitter`)
             .then((res) => {
                 setSearchedList(res.data.statuses)
             })
@@ -22,7 +24,6 @@ const Index: FC = () => {
     return (
         <>
             <h1>検索結果表示</h1>
-            {/* <button type="button" onClick={result}>検索</button> */}
             {searchedList?.map((searchedTweet) => {
                 return (
                     <div key={searchedTweet.id}>

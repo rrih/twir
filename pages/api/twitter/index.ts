@@ -9,7 +9,7 @@ const searchParams = {
 
 const handler = async (_req: NextApiRequest, res: NextApiResponse): Promise<void> => {
     try {
-        await twitter.get('search/tweets', searchParams, function (error, result, response) {
+        await twitter.get('search/tweets', searchParams, function (error: any, result: any) {
             if (!error) {
                 res.status(200).json(result)
             }
