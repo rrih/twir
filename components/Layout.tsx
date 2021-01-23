@@ -80,6 +80,10 @@ const ListIcon = () => (
 			</ListItem>
 			<Divider />
 			<ListItem button>
+				<a href={`${url}/url`}>プロフィールURL取得</a>
+			</ListItem>
+			<Divider />
+			<ListItem button>
 				<a href={`${url}/search`}>検索</a>
 			</ListItem>
 			<Divider />
