@@ -9,22 +9,26 @@ import { Layout } from "../../components/Layout";
 import CircularProgress from '@material-ui/core/CircularProgress';
 
 const Index: FC = () => {
-    const [searchedList, setSearchedList] = useState<Array<Tweet>>()
+    const [searchedList, setSearchedList] = useState<Array<Tweet>>([])
     const [searchQuery, setSearchQuery] = useState<string>('')
     const [searchCountLength, setSearchCountLength] = useState<string>('10')
     const [isLoading, setIsLoading] = useState<boolean>()
+    const [isSearched, setIsSearched] = useState<boolean>(false)
+    const [searchedWord, setSearchedWord] = useState<string>()
 
     const search = async () => {
         setIsLoading(true)
-        axios.get(`${api}/api/search`, { params: { q: searchQuery, count: searchCountLength } })
+        await axios.get(`${api}/api/search`, { params: { q: searchQuery, count: searchCountLength } })
             .then((res) => {
                 setSearchedList(res.data.statuses)
+                setSearchedWord(searchQuery)
             })
             .catch((err) => {
                 console.log(err)
             })
             .finally(() => {
                 setIsLoading(false)
+                setIsSearched(true)
             })
     }
 
@@ -52,7 +56,7 @@ const Index: FC = () => {
                     検索する
                 </Button>
                 {isLoading && <DivCenter><CircularProgress /></DivCenter>}
-                {!isLoading && searchedList?.map((searchedTweet) => {
+                {(!isLoading && searchedList) && searchedList?.map((searchedTweet) => {
                     // 時間の処理
                     const dibt: Array<string> = String(searchedTweet.created_at).split(' ')
                     const convertedDate: Date = new Date(`${dibt[0]} ${dibt[1]} ${dibt[2]} ${dibt[5]} ${dibt[3]} GMT+0900 (日本標準時)`)
@@ -97,6 +101,7 @@ const Index: FC = () => {
                         </SearchedTweetFrame>
                     )
                 })}
+                {(searchQuery === searchedWord && isSearched && searchedList.length === 0) && <DivCenter>「{searchQuery}」の検索結果はありません</DivCenter>}
             </Layout>
         </MuiThemeProvider>
     )
