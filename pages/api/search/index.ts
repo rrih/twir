@@ -1,14 +1,10 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import twitter from '../twitterConnect'
 
-const searchParams = {
-    q: 'rrihapp',
-    count: 99
-}
-
 const handler = async (_req: NextApiRequest, res: NextApiResponse): Promise<void> => {
+    const paramsForSearch = _req.query
     try {
-        await twitter.get('search/tweets', searchParams, function (error: any, result: any) {
+        await twitter.get('search/tweets', paramsForSearch, function (error: any, result: any) {
             if (!error) {
                 res.status(200).json(result)
             }

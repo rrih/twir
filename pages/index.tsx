@@ -1,27 +1,26 @@
 import axios from "axios";
-import { FC, useEffect, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { Tweet } from "../interfaces";
 import { api } from "../utils/url";
-import styled from "styled-components";
-
-const SearchedTweetFrame = styled.div`
-    border: 1px solid;
-    border-bottom: none;
-    padding: 2em;
-`
+import { theme } from "../utils/theme";
+import { SearchedTweetFrame, SearchTweetInput } from "../styles";
+import { Layout } from "../components/Layout";
+import { MuiThemeProvider } from "@material-ui/core";
 
 const Index: FC = () => {
-    const [searchedList, setSearchedList] = useState<Array<Tweet>>();
+    const [searchedList, setSearchedList] = useState<Array<Tweet>>()
+    const [searchQuery, setSearchQuery] = useState<string>('')
+    const [searchCountLength, setSearchCountLength] = useState<string>('10')
 
     useEffect(() => {
         result()
     }, [])
 
     const result = async () => {
-        axios.get(`${api}/api/search`)
+        axios.get(`${api}/api/search`, { params: { q: searchQuery, count: searchCountLength } })
             .then((res) => {
                 setSearchedList(res.data.statuses)
-                console.log(res.data.statuses.length)
+                console.log(`length: ${res.data.statuses.length}`)
             })
             .catch((err) => {
                 console.log(err)
@@ -33,17 +32,30 @@ const Index: FC = () => {
     }
 
     return (
-        <>
-            <h1>@rrih_dev関連の最新ツイート</h1>
-            {searchedList?.map((searchedTweet) => {
-                return (
-                    <SearchedTweetFrame key={searchedTweet.id}>
-                        <div>{searchedTweet.text}</div>
-                        <div>{searchedTweet.created_at}</div>
-                    </SearchedTweetFrame>
-                )
-            })}
-        </>
+        <MuiThemeProvider theme={theme}>
+            <Layout title="twir">
+                <h1>ツイート検索</h1>
+                <SearchTweetInput
+                    type="text"
+                    placeholder="ワードを入力してください 例: `@rrihapp`"
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                />
+                <SearchTweetInput
+                    type="text"
+                    placeholder="検索件数を入力してください 例: 10"
+                    onChange={(e) => setSearchCountLength(e.target.value)}
+                />
+                <button type="submit" onClick={result}>検索する</button>
+                {searchedList?.map((searchedTweet) => {
+                    return (
+                        <SearchedTweetFrame key={searchedTweet.id}>
+                            <div>{searchedTweet.text}</div>
+                            <div>{searchedTweet.created_at}</div>
+                        </SearchedTweetFrame>
+                    )
+                })}
+            </Layout>
+        </MuiThemeProvider>
     )
 }
 
