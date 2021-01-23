@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react'
+qimport React, { ReactNode } from 'react'
 import Head from 'next/head'
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -100,7 +100,7 @@ const ListIcon = () => (
         </ListItem> */}
         <Divider />
         <ListItem button>
-          <a href="/auth">
+          <a href="https://rrih.github.io/twir/auth">
             ログイン
           </a>
         </ListItem>
