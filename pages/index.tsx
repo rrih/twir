@@ -1,15 +1,13 @@
 import axios from "axios";
 import { FC, useEffect, useState } from "react";
 import { Tweet } from "../interfaces";
+import { api } from "../utils/url";
 
-const api: string = process.env.NODE_ENV === 'production' ? 'https://rrih.github.io' : 'http://localhost:3000'
-// console.log(api)
 const Index: FC = () => {
     const [searchedList, setSearchedList] = useState<Array<Tweet>>();
 
     useEffect(() => {
         result()
-        console.log(`twitter key: ${process.env.TWITTER_CONSUMER_KEY}`)
     }, [])
 
     const result = async () => {
