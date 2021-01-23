@@ -11,7 +11,10 @@ import CircularProgress from '@material-ui/core/CircularProgress'
 const Index: FC = () => {
 	const [searchedList, setSearchedList] = useState<Array<Tweet>>([])
 	const [searchQuery, setSearchQuery] = useState<string>('')
-	const [searchCountLength, setSearchCountLength] = useState<string>('10')
+    const [searchCountLength, setSearchCountLength] = useState<string>('10')
+    const [searchLang, setSearchLang] = useState<string>('')
+    const [searchUntilDate, setSearchUntilDate] = useState<string>() // YYYY-MM-DD の形式
+    const [resultType, setResultType] = useState<string>() // 検索するツイートの種類 popular, recent, mixed のいずれか
 	const [isLoading, setIsLoading] = useState<boolean>()
 	const [isSearched, setIsSearched] = useState<boolean>(false)
 	const [searchedWord, setSearchedWord] = useState<string>()
@@ -20,7 +23,7 @@ const Index: FC = () => {
 		setIsLoading(true)
 		await axios
 			.get(`${api}/api/search`, {
-				params: { q: searchQuery, count: searchCountLength }
+				params: { q: searchQuery, count: searchCountLength, lang: searchLang, until: searchUntilDate, result_type: resultType }
 			})
 			.then((res) => {
 				setSearchedList(res.data.statuses)
@@ -49,6 +52,15 @@ const Index: FC = () => {
 					placeholder="検索件数を入力してください 例: 10"
 					onChange={(e: any) => setSearchCountLength(e.target.value)}
 				/>
+                <select>
+                    <option value="ja">日本語</option>
+                    <option value="en">英語</option>
+                </select>
+                <select>
+                    <option value="popular">人気のツイート</option>
+                    <option value="recent">最新のツイート</option>
+                    <option value="mixed">全てのツイート</option>
+                </select>
 				<Button variant="contained" color="secondary" type="submit" onClick={search} disabled={!searchQuery}>
 					検索する
 				</Button>
