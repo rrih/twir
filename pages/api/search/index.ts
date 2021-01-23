@@ -3,7 +3,7 @@ import twitter from '../twitterConnect'
 
 const searchParams = {
     q: 'rrihapp',
-    count: 10
+    count: 99
 }
 
 const handler = async (_req: NextApiRequest, res: NextApiResponse): Promise<void> => {
