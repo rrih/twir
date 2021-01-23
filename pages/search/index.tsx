@@ -32,7 +32,7 @@ const Index: FC = () => {
                 <h1>ツイート検索</h1>
                 <SearchTweetInput
                     type="text"
-                    placeholder="ワードを入力してください 例: `@rrihapp`"
+                    placeholder="ワードを入力してください 例: `@rrih_dev`"
                     onChange={(e: any) => setSearchQuery(e.target.value)}
                 />
                 <SearchTweetInput

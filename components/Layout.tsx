@@ -85,7 +85,7 @@ const ListIcon = () => (
         <ListItem button>
           <ListItemText>
             <a href={url}>
-              ホーム
+              トップ
             </a>
           </ListItemText>
         </ListItem>
