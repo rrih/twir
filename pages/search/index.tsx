@@ -42,8 +42,14 @@ const Index: FC = () => {
                     placeholder="検索件数を入力してください 例: 10"
                     onChange={(e: any) => setSearchCountLength(e.target.value)}
                 />
-                <Button variant="contained" color="secondary" type="submit" onClick={search}>
-                検索する
+                <Button
+                    variant="contained"
+                    color="secondary"
+                    type="submit"
+                    onClick={search}
+                    disabled={!searchQuery}
+                >
+                    検索する
                 </Button>
                 {isLoading && <DivCenter><CircularProgress /></DivCenter>}
                 {!isLoading && searchedList?.map((searchedTweet) => {
