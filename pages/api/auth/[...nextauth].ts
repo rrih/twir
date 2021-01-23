@@ -5,8 +5,8 @@ import Providers from 'next-auth/providers'
 const options = {
     providers: [
         Providers.Twitter({
-            clientId: process.env.TWITTER_CLIENT_ID,
-            clientSecret: process.env.TWITTER_CLIENT_SECRET
+            clientId: process.env.TWITTER_CONSUMER_KEY === undefined ? '' : process.env.TWITTER_CONSUMER_KEY,
+            clientSecret: process.env.TWITTER_CONSUMER_SECRET === undefined ? '' : process.env.TWITTER_CONSUMER_SECRET 
         })
     ],
 }

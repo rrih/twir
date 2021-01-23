@@ -6,11 +6,13 @@ import { theme } from "../utils/theme";
 import { SearchedTweetFrame, SearchTweetInput } from "../styles";
 import { Layout } from "../components/Layout";
 import { MuiThemeProvider } from "@material-ui/core";
+// import { signIn, signOut, useSession } from 'next-auth/client'
 
 const Index: FC = () => {
     const [searchedList, setSearchedList] = useState<Array<Tweet>>()
     const [searchQuery, setSearchQuery] = useState<string>('')
     const [searchCountLength, setSearchCountLength] = useState<string>('10')
+    // const [session, loading] = useSession()
 
     useEffect(() => {
         result()
@@ -34,6 +36,14 @@ const Index: FC = () => {
     return (
         <MuiThemeProvider theme={theme}>
             <Layout title="twir">
+                {/* {!session && <>
+                    Not signed in <br />
+                    <button type="button" onClick={() => signIn}>Sign in</button>
+                </>}
+                {session && <>
+                    Signed in as {session.user.name} <br />
+                    <button type="button" onClick={() => signOut}>Sign out</button>
+                </>} */}
                 <h1>ツイート検索</h1>
                 <SearchTweetInput
                     type="text"

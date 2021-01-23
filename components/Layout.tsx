@@ -1,6 +1,4 @@
 import React, { ReactNode } from 'react'
-import Link from 'next/link'
-// import styled from "styled-components";
 import Head from 'next/head'
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -10,10 +8,8 @@ import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
-// import { year } from "../utils/time";
 import ListItemText from '@material-ui/core/ListItemText';
-// import { LinkTabInAppBar } from '../utils/style';
-import { Footer, Root, WhiteLink } from '../styles';
+import { Footer, Root } from '../styles';
 
 type Props = {
     children?: ReactNode
