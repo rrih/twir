@@ -32,3 +32,7 @@ export const TimeText = styled.div`
 export const ProfileImageInTL = styled.img`
     border-radius: 25px;
 `
+
+export const DivCenter = styled.div`
+    text-align: center;
+`

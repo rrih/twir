@@ -3,26 +3,28 @@ import React, { FC, useEffect, useState } from "react";
 import { Tweet, User } from "../../interfaces";
 import { api } from "../../utils/url";
 import { theme } from "../../utils/theme";
-import { ProfileImageInTL, SearchedTweetFrame, SearchTweetInput, TimeText } from "../../styles";
+import { DivCenter, ProfileImageInTL, SearchedTweetFrame, SearchTweetInput, TimeText } from "../../styles";
 import { Button, MuiThemeProvider } from "@material-ui/core";
 import { Layout } from "../../components/Layout";
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 const Index: FC = () => {
     const [searchedList, setSearchedList] = useState<Array<Tweet>>()
     const [searchQuery, setSearchQuery] = useState<string>('')
     const [searchCountLength, setSearchCountLength] = useState<string>('10')
+    const [isLoading, setIsLoading] = useState<boolean>()
 
-    useEffect(() => {
-        result()
-    }, [])
-
-    const result = async () => {
+    const search = async () => {
+        setIsLoading(true)
         axios.get(`${api}/api/search`, { params: { q: searchQuery, count: searchCountLength } })
             .then((res) => {
                 setSearchedList(res.data.statuses)
             })
             .catch((err) => {
                 console.log(err)
+            })
+            .finally(() => {
+                setIsLoading(false)
             })
     }
 
@@ -40,10 +42,11 @@ const Index: FC = () => {
                     placeholder="検索件数を入力してください 例: 10"
                     onChange={(e: any) => setSearchCountLength(e.target.value)}
                 />
-                <Button variant="contained" color="secondary" type="submit" onClick={result}>
+                <Button variant="contained" color="secondary" type="submit" onClick={search}>
                 検索する
                 </Button>
-                {searchedList?.map((searchedTweet) => {
+                {isLoading && <DivCenter><CircularProgress /></DivCenter>}
+                {!isLoading && searchedList?.map((searchedTweet) => {
                     // 時間の処理
                     const dibt: Array<string> = String(searchedTweet.created_at).split(' ')
                     const convertedDate: Date = new Date(`${dibt[0]} ${dibt[1]} ${dibt[2]} ${dibt[5]} ${dibt[3]} GMT+0900 (日本標準時)`)
