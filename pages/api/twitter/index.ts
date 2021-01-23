@@ -1,7 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import twitter from './twitterConnect'
 
-// const params = { screen_name: 'nodejs' };
 const searchParams = {
     q: 'rrihapp',
     count: 10

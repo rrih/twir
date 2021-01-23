@@ -9,6 +9,7 @@ const Index: FC = () => {
 
     useEffect(() => {
         result()
+        console.log(`twitter key: ${process.env.TWITTER_CONSUMER_KEY}`)
     }, [])
 
     const result = async () => {
