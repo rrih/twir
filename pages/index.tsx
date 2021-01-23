@@ -11,7 +11,7 @@ const Index: FC = () => {
     }, [])
 
     const result = async () => {
-        axios.get(`${api}/api/twitter`)
+        axios.get(`${api}/api/search`)
             .then((res) => {
                 setSearchedList(res.data.statuses)
             })

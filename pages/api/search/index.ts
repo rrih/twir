@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import twitter from './twitterConnect'
+import twitter from '../twitterConnect'
 
 const searchParams = {
     q: 'rrihapp',
