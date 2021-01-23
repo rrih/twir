@@ -7,7 +7,7 @@
     "build": "env NODE_ENV='production' next build",
     "start": "next start",
     "export": "next export",
-    "format": "prettier --write ./pages/*.tsx ./pages/**/*.{ts,tsx} ./pages/**/**/*.ts"
+    "format": "prettier --write ./pages/*.tsx ./pages/**/*.{ts,tsx} ./pages/**/**/*.ts ./**/*.ts ./**/*.tsx"
   },
   "repository": {
     "type": "git",
