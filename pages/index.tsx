@@ -5,7 +5,7 @@ import { api } from "../utils/url";
 import { theme } from "../utils/theme";
 import { SearchedTweetFrame, SearchTweetInput } from "../styles";
 import { Layout } from "../components/Layout";
-import { MuiThemeProvider } from "@material-ui/core";
+import { Button, MuiThemeProvider } from "@material-ui/core";
 // import { signIn, signOut, useSession } from 'next-auth/client'
 
 const Index: FC = () => {
@@ -36,34 +36,10 @@ const Index: FC = () => {
     return (
         <MuiThemeProvider theme={theme}>
             <Layout title="twir">
-                {/* {!session && <>
-                    Not signed in <br />
-                    <button type="button" onClick={() => signIn}>Sign in</button>
-                </>}
-                {session && <>
-                    Signed in as {session.user.name} <br />
-                    <button type="button" onClick={() => signOut}>Sign out</button>
-                </>} */}
-                <h1>ツイート検索</h1>
-                <SearchTweetInput
-                    type="text"
-                    placeholder="ワードを入力してください 例: `@rrihapp`"
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                />
-                <SearchTweetInput
-                    type="text"
-                    placeholder="検索件数を入力してください 例: 10"
-                    onChange={(e) => setSearchCountLength(e.target.value)}
-                />
-                <button type="submit" onClick={result}>検索する</button>
-                {searchedList?.map((searchedTweet) => {
-                    return (
-                        <SearchedTweetFrame key={searchedTweet.id}>
-                            <div>{searchedTweet.text}</div>
-                            <div>{searchedTweet.created_at}</div>
-                        </SearchedTweetFrame>
-                    )
-                })}
+                <h1>twir</h1>
+                Twitterクライアント用アプリケーションです(´･_･`)<br />
+                きまぐれで実験的に作っているので色々と変わります<br />
+                <a href="https://github.com/rrih/twir">Github</a>
             </Layout>
         </MuiThemeProvider>
     )

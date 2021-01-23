@@ -10,6 +10,7 @@ import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import { Footer, Root } from '../styles';
+import { url } from '../utils/url';
 
 type Props = {
     children?: ReactNode
@@ -83,24 +84,20 @@ const ListIcon = () => (
     <List>
         <ListItem button>
           <ListItemText>
-            ホーム
+            <a href={url}>
+              ホーム
+            </a>
           </ListItemText>
         </ListItem>
-        {/* <Divider />
-        <ListItem button >
-          プロフィール
-        </ListItem>
-        <Divider />
-        <ListItem button >
-          フォロー
-        </ListItem>
-        <Divider />
-        <ListItem button >
-          フォロワー
-        </ListItem> */}
         <Divider />
         <ListItem button>
-          <a href="https://rrih.github.io/twir/auth">
+          <a href={`${url}/search`}>
+            検索
+          </a>
+        </ListItem>
+        <Divider />
+        <ListItem button>
+          <a href={`${url}/auth`}>
             ログイン
           </a>
         </ListItem>
