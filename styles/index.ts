@@ -24,3 +24,11 @@ export const WhiteLink = styled.a`
     color: white;
     text-decoration: none;
 `
+
+export const TimeText = styled.div`
+    font-size: 10px;
+`
+
+export const ProfileImageInTL = styled.img`
+    border-radius: 25px;
+`
