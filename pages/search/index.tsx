@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { FC, useEffect, useState } from "react";
+import React, { FC, useState } from "react";
 import { Tweet, User } from "../../interfaces";
 import { api } from "../../utils/url";
 import { theme } from "../../utils/theme";
