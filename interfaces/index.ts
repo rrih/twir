@@ -21,3 +21,13 @@ export interface User {
 	statuses_count: number // ツイート数
 	url: string
 }
+
+export interface SearchLang {
+	lang: string
+	label: string
+}
+
+export interface SearchType {
+	type: string
+	label: string
+}

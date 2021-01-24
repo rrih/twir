@@ -1,18 +1,31 @@
 import axios from 'axios'
 import React, { FC, useState } from 'react'
-import { Tweet, User } from '../../interfaces'
+import { SearchLang, SearchType, Tweet, User } from '../../interfaces'
 import { api } from '../../utils/url'
 import { theme } from '../../utils/theme'
-import { DivCenter, ProfileImageInTL, SearchedTweetFrame, SearchTweetInput, TimeText } from '../../styles'
+import { DivCenter, ProfileImageInTL, SearchedTweetFrame, SearchTweetInput, SelectSearchCondition, TimeText } from '../../styles'
 import { Button, MuiThemeProvider } from '@material-ui/core'
 import { Layout } from '../../components/Layout'
 import CircularProgress from '@material-ui/core/CircularProgress'
+
+const SearchLangs: Array<SearchLang> = [
+    { lang: '', label: '' },
+    { lang: 'ja', label: '日本語' },
+    { lang: 'en', label: '英語' }
+]
+
+const SearchTweetTypes: Array<SearchType> = [
+    { type: '', label: '' },
+    { type: 'popular', label: '人気のツイート' },
+    { type: 'recent', label: '最新のツイート' },
+    { type: 'mixed', label: '全てのツイート' }
+]
 
 const Index: FC = () => {
 	const [searchedList, setSearchedList] = useState<Array<Tweet>>([])
 	const [searchQuery, setSearchQuery] = useState<string>('')
     const [searchCountLength, setSearchCountLength] = useState<string>('10')
-    const [searchLang, setSearchLang] = useState<string>('')
+    const [searchLang, setSearchLang] = useState<string>()
     const [searchUntilDate, setSearchUntilDate] = useState<string>() // YYYY-MM-DD の形式
     const [resultType, setResultType] = useState<string>() // 検索するツイートの種類 popular, recent, mixed のいずれか
 	const [isLoading, setIsLoading] = useState<boolean>()
@@ -20,14 +33,25 @@ const Index: FC = () => {
 	const [searchedWord, setSearchedWord] = useState<string>()
 
 	const search = async () => {
-		setIsLoading(true)
+        setIsLoading(true)
+        console.log(searchLang)
+        console.log(resultType)
+        const searchParams = {
+            q: searchQuery,
+            count: searchCountLength,
+            // lang: searchLang,
+            // until: searchUntilDate,
+            // result_type: resultType
+        }
+        console.log(searchParams)
 		await axios
 			.get(`${api}/api/search`, {
-				params: { q: searchQuery, count: searchCountLength, lang: searchLang, until: searchUntilDate, result_type: resultType }
+				params: { q: searchQuery, count: searchCountLength }
 			})
 			.then((res) => {
 				setSearchedList(res.data.statuses)
-				setSearchedWord(searchQuery)
+                setSearchedWord(searchQuery)
+                // console.log(resultType)
 			})
 			.catch((err) => {
 				console.log(err)
@@ -36,7 +60,7 @@ const Index: FC = () => {
 				setIsLoading(false)
 				setIsSearched(true)
 			})
-	}
+    }
 
 	return (
 		<MuiThemeProvider theme={theme}>
@@ -49,18 +73,19 @@ const Index: FC = () => {
 				/>
 				<SearchTweetInput
 					type="text"
-					placeholder="検索件数を入力してください 例: 10"
+					placeholder="1~99の範囲内で検索件数を入力してください 例: 10"
 					onChange={(e: any) => setSearchCountLength(e.target.value)}
 				/>
-                <select>
-                    <option value="ja">日本語</option>
-                    <option value="en">英語</option>
-                </select>
-                <select>
-                    <option value="popular">人気のツイート</option>
-                    <option value="recent">最新のツイート</option>
-                    <option value="mixed">全てのツイート</option>
-                </select>
+                {/* <SelectSearchCondition value={searchLang} onChange={(e) => setSearchLang(e.target.value)}>
+                    {SearchLangs.map((sl) => {
+                        return <option value={sl.lang} key={sl.lang}>{sl.label}</option>
+                    })}
+                </SelectSearchCondition>
+                <SelectSearchCondition value={resultType} onChange={(e) => setResultType(e.target.value)}>
+                    {SearchTweetTypes.map((stt) => {
+                        return <option value={stt.type} key={stt.type}>{stt.label}</option>
+                    })}
+                </SelectSearchCondition> */}
 				<Button variant="contained" color="secondary" type="submit" onClick={search} disabled={!searchQuery}>
 					検索する
 				</Button>
