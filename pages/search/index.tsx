@@ -41,7 +41,7 @@ const Index: FC = () => {
 				<h1>ツイート検索</h1>
 				<SearchTweetInput
 					type="text"
-					placeholder="ワードを入力してください 例: `@rrih_dev`"
+					placeholder="ワードを入力してください 例: `@Tokyo2020jp`"
 					onChange={(e: any) => setSearchQuery(e.target.value)}
 				/>
 				<SearchTweetInput
