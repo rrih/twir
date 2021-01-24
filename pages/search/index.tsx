@@ -80,11 +80,7 @@ const Index: FC = () => {
 						let newLink: string
 						let newText: string | JSX.Element = ''
 						// TODO あとで http の方も実装、あるいは https の場合と共通化する
-						// if (text.indexOf('http://') != -1) {
-						//     console.log(text.split('http://')[1].split(' ')[0])
-						//     newLink = `http://${text.split('http://')[1].split(' ')[0]}`
-						// }
-						// https
+						// https:// 部分抽出、DOMにして入れ直す
 						if (text.indexOf('https://') != -1) {
 							// TODO クソコード感…
 							newLink = `https://${text.split('https://')[1].split(' ')[0]}`
