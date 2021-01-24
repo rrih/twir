@@ -1,5 +1,5 @@
 {
-  "name": "twir",
+  "name": "rrih/twir",
   "version": "0.0.1",
   "description": "Twitter client",
   "scripts": {
@@ -16,6 +16,13 @@
   "keywords": [],
   "author": "rrih <rsklv@icloud.com>",
   "license": "MIT",
+  "contributors": [
+    {
+      "name": "Ryohei Kawahara",
+      "url": "https://github.com/rrih",
+      "githubUsername": "rrih"
+    }
+  ],
   "bugs": {
     "url": "https://github.com/rrih/twir/issues"
   },
