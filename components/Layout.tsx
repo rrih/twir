@@ -84,7 +84,7 @@ const ListIcon = () => (
 			</ListItem>
 			<Divider />
 			<ListItem button>
-				<a href={`${url}/auth`}>ログイン</a>
+				<a href={`${url}/api/auth/signin`}>ログイン</a>
 			</ListItem>
 		</List>
 	</>
