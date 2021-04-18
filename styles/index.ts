@@ -36,3 +36,6 @@ export const ProfileImageInTL = styled.img`
 export const DivCenter = styled.div`
 	text-align: center;
 `
+export const SelectSearchCondition = styled.select`
+	width: 100vw;
+`
